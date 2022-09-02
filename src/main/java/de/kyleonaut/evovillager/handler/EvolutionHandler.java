@@ -1,7 +1,7 @@
 package de.kyleonaut.evovillager.handler;
 
 import de.kyleonaut.evovillager.event.EvolutionEvent;
-import de.kyleonaut.evovillager.evolution.Evolution;
+import de.kyleonaut.evovillager.evolution.active.Evolution;
 import org.bukkit.Bukkit;
 
 import java.util.ArrayList;

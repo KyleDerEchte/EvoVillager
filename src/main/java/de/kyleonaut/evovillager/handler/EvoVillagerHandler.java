@@ -2,10 +2,7 @@ package de.kyleonaut.evovillager.handler;
 
 import de.kyleonaut.evovillager.villager.EvoVillager;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 public class EvoVillagerHandler {
     private static EvoVillagerHandler instance;
@@ -21,7 +18,7 @@ public class EvoVillagerHandler {
 
     }
 
-    private Map<UUID, EvoVillager> villagerMap = new HashMap<>();
+    private final Map<UUID, EvoVillager> villagerMap = new HashMap<>();
 
     public void registerEvoVillager(EvoVillager evoVillager) {
         this.villagerMap.put(evoVillager.getUuid(), evoVillager);
@@ -40,5 +37,9 @@ public class EvoVillagerHandler {
             return Optional.of(this.villagerMap.get(uuid));
         }
         return Optional.empty();
+    }
+
+    public Collection<EvoVillager> getAllEvoVillagers() {
+        return this.villagerMap.values();
     }
 }

@@ -1,4 +1,4 @@
-package de.kyleonaut.evovillager.evolution;
+package de.kyleonaut.evovillager.evolution.active;
 
 import de.kyleonaut.evovillager.event.EvolutionEvent;
 import de.kyleonaut.evovillager.handler.EvolutionHandler;

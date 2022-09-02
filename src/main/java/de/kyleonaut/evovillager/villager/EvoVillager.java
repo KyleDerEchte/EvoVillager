@@ -1,8 +1,10 @@
 package de.kyleonaut.evovillager.villager;
 
 import de.kyleonaut.evovillager.EvoVillagerPlugin;
-import de.kyleonaut.evovillager.evolution.Evolution;
+import de.kyleonaut.evovillager.evolution.active.Evolution;
+import de.kyleonaut.evovillager.evolution.passive.PassiveEvolution;
 import de.kyleonaut.evovillager.handler.EvoVillagerHandler;
+import de.kyleonaut.evovillager.handler.PassiveEvolutionHandler;
 import lombok.Getter;
 import org.bukkit.Location;
 import org.bukkit.NamespacedKey;
@@ -13,10 +15,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+@Getter
 public class EvoVillager {
-    @Getter
     private UUID uuid;
     private List<Evolution> evolutions;
+    private List<PassiveEvolution> passiveEvolutions;
     private Villager villager;
 
     public static EvoVillager create() {
@@ -41,6 +44,15 @@ public class EvoVillager {
             this.evolutions = new ArrayList<>();
         }
         this.evolutions.add(evolution);
+        return this;
+    }
+
+    public EvoVillager addPassiveEvolution(PassiveEvolution passiveEvolution) {
+        PassiveEvolutionHandler.getInstance().register();
+        if (this.passiveEvolutions == null) {
+            this.passiveEvolutions = new ArrayList<>();
+        }
+        this.passiveEvolutions.add(passiveEvolution);
         return this;
     }
 }

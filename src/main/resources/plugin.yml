@@ -1,0 +1,5 @@
+name: EvoVillager
+main: de.kyleonaut.evovillager.EvoVillagerPlugin
+version: 1.0.0
+api-version: 1.13
+author: kyleonaut

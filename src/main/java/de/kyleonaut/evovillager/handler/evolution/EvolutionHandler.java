@@ -82,7 +82,7 @@ public class EvolutionHandler {
     public void execute(EvolutionEvent event) {
         if (this.activeEvolutions.containsKey(event.getClass())) {
             final List<Evolution> evolutions = this.activeEvolutions.get(event.getClass());
-            evolutions.forEach(evolution -> getEvoVillagersWithEvolution(evolution).forEach(evolution::execute));
+            evolutions.forEach(evolution -> evolution.execute(event.getEvoVillager()));
             return;
         }
         Bukkit.getLogger().log(Level.WARNING, "[EvoVillager] An event was called with no evolutions to execute");

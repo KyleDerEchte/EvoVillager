@@ -3,6 +3,7 @@ package de.kyleonaut.evovillager;
 import de.kyleonaut.evovillager.evolution.spec.active.ActiveTestEvolution;
 import de.kyleonaut.evovillager.evolution.spec.passive.PassiveTestEvolution;
 import de.kyleonaut.evovillager.listener.EntityDamageByEntityEventListener;
+import de.kyleonaut.evovillager.listener.EntityDeathEventListener;
 import de.kyleonaut.evovillager.villager.EvoVillager;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
@@ -15,6 +16,7 @@ public class EvoVillagerPlugin extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
         Bukkit.getPluginManager().registerEvents(new EntityDamageByEntityEventListener(), this);
+        Bukkit.getPluginManager().registerEvents(new EntityDeathEventListener(), this);
         Bukkit.getPluginManager().registerEvents(this, this);
     }
 

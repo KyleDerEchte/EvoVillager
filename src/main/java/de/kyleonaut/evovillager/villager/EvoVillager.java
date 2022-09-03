@@ -1,10 +1,9 @@
 package de.kyleonaut.evovillager.villager;
 
 import de.kyleonaut.evovillager.EvoVillagerPlugin;
-import de.kyleonaut.evovillager.evolution.active.Evolution;
-import de.kyleonaut.evovillager.evolution.passive.PassiveEvolution;
-import de.kyleonaut.evovillager.handler.EvoVillagerHandler;
-import de.kyleonaut.evovillager.handler.PassiveEvolutionHandler;
+import de.kyleonaut.evovillager.evolution.api.Evolution;
+import de.kyleonaut.evovillager.handler.evolution.EvolutionHandler;
+import de.kyleonaut.evovillager.handler.handler.EvoVillagerHandler;
 import lombok.Getter;
 import org.bukkit.Location;
 import org.bukkit.NamespacedKey;
@@ -18,8 +17,8 @@ import java.util.UUID;
 @Getter
 public class EvoVillager {
     private UUID uuid;
-    private List<Evolution> evolutions;
-    private List<PassiveEvolution> passiveEvolutions;
+    private List<Evolution> activeEvolutions;
+    private List<Evolution> passiveEvolutions;
     private Villager villager;
 
     public static EvoVillager create() {
@@ -40,19 +39,20 @@ public class EvoVillager {
     }
 
     public EvoVillager addEvolution(Evolution evolution) {
-        if (this.evolutions == null) {
-            this.evolutions = new ArrayList<>();
+        if (this.activeEvolutions == null) {
+            this.activeEvolutions = new ArrayList<>();
         }
-        this.evolutions.add(evolution);
+        this.activeEvolutions.add(evolution);
+        EvolutionHandler.getInstance().register(evolution);
         return this;
     }
 
-    public EvoVillager addPassiveEvolution(PassiveEvolution passiveEvolution) {
-        PassiveEvolutionHandler.getInstance().register();
+    public EvoVillager addPassiveEvolution(Evolution evolution) {
         if (this.passiveEvolutions == null) {
             this.passiveEvolutions = new ArrayList<>();
         }
-        this.passiveEvolutions.add(passiveEvolution);
+        this.passiveEvolutions.add(evolution);
+        EvolutionHandler.getInstance().register(evolution);
         return this;
     }
 }

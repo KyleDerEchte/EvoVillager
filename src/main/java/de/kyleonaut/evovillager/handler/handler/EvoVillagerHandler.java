@@ -1,4 +1,4 @@
-package de.kyleonaut.evovillager.handler;
+package de.kyleonaut.evovillager.handler.handler;
 
 import de.kyleonaut.evovillager.villager.EvoVillager;
 
@@ -6,6 +6,7 @@ import java.util.*;
 
 public class EvoVillagerHandler {
     private static EvoVillagerHandler instance;
+    private final Map<UUID, EvoVillager> villagerMap = new HashMap<>();
 
     public static EvoVillagerHandler getInstance() {
         if (instance == null) {
@@ -17,8 +18,6 @@ public class EvoVillagerHandler {
     private EvoVillagerHandler() {
 
     }
-
-    private final Map<UUID, EvoVillager> villagerMap = new HashMap<>();
 
     public void registerEvoVillager(EvoVillager evoVillager) {
         this.villagerMap.put(evoVillager.getUuid(), evoVillager);

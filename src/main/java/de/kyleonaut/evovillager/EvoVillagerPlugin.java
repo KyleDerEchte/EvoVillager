@@ -1,6 +1,7 @@
 package de.kyleonaut.evovillager;
 
-import de.kyleonaut.evovillager.evolution.passive.ZombieRevengePassiveEvolution;
+import de.kyleonaut.evovillager.evolution.spec.active.ActiveTestEvolution;
+import de.kyleonaut.evovillager.evolution.spec.passive.PassiveTestEvolution;
 import de.kyleonaut.evovillager.listener.EntityDamageByEntityEventListener;
 import de.kyleonaut.evovillager.villager.EvoVillager;
 import org.bukkit.Bukkit;
@@ -27,7 +28,8 @@ public class EvoVillagerPlugin extends JavaPlugin implements Listener {
         if (event.getMessage().equalsIgnoreCase("test")) {
             Bukkit.getScheduler().runTask(this, () -> {
                 EvoVillager.create()
-                        .addPassiveEvolution(new ZombieRevengePassiveEvolution())
+                        .addEvolution(new ActiveTestEvolution())
+                        .addPassiveEvolution(new PassiveTestEvolution())
                         .spawn(event.getPlayer().getLocation());
             });
         }

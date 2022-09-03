@@ -2,8 +2,8 @@ package de.kyleonaut.evovillager.listener;
 
 import de.kyleonaut.evovillager.EvoVillagerPlugin;
 import de.kyleonaut.evovillager.event.EvoVillagerDamageByEntityEvent;
-import de.kyleonaut.evovillager.handler.EvoVillagerHandler;
-import de.kyleonaut.evovillager.handler.EvolutionHandler;
+import de.kyleonaut.evovillager.handler.evolution.EvolutionHandler;
+import de.kyleonaut.evovillager.handler.handler.EvoVillagerHandler;
 import de.kyleonaut.evovillager.villager.EvoVillager;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
@@ -36,6 +36,6 @@ public class EntityDamageByEntityEventListener implements Listener {
             event.setCancelled(true);
             return;
         }
-        EvolutionHandler.getInstance().invoke(evoVillagerDamageByEntityEvent);
+        EvolutionHandler.getInstance().execute(evoVillagerDamageByEntityEvent);
     }
 }
